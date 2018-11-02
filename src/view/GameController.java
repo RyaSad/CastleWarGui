@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.*;
 import javafx.fxml.FXMLLoader;
 //import application.Card;
@@ -41,7 +42,9 @@ public class GameController {
 	ProgressBar p2Castle;
 	
 	@FXML
-	HBox playerHand;
+	Button button_discard;
+	
+	
 	
 	@FXML ImageView card1;
 	@FXML ImageView card2;
@@ -51,13 +54,18 @@ public class GameController {
 	@FXML ImageView card6;
 	@FXML ImageView card7;
 	@FXML ImageView card8;
-	@FXML ImageView card9;
+	
+	@FXML
+	HBox playerHand;
 	
 	ImageView draggedCard = null;
 	
 	@FXML
 	void initialize() {
-		ImageView cardList[]= {card1, card2, card3, card4, card5, card6, card7, card8, card9};
+		//Tooltip tip = new Tooltip("hey");
+		//button_discard.setTooltip(tip);
+		ImageView cardList[]= {card1, card2, card3, card4, card5, card6, card7, card8};
+		
 		
 		for(int i = 0; i < cardList.length; i++) {
 		ImageView thisCard = cardList[i];
@@ -66,6 +74,8 @@ public class GameController {
 	            @Override
 	            public void handle(MouseEvent t) {
 	                System.out.println(thisCard.getId());
+	                System.out.println(t.getSceneX());
+	                System.out.println(t.getSceneY());
 	                //Card archer = new Card("Archer","attack","weapons", .5, -1);
 	               // PlayCard(archer);
 	            }
@@ -93,16 +103,16 @@ public class GameController {
 		            	if(draggedCard == null) {
 		            		return;
 		            	}
-		                System.out.println(draggedCard.getId());
-		                System.out.println(t.getY());
-		                if(t.getY() < -15) {
+		            	double xPos = t.getSceneX();
+		            	double yPos = t.getSceneY();
+		                if((xPos > 780 && xPos < 860) && yPos > 410 && yPos < 550) {
 		                	String currentDir = System.getProperty("user.dir");
 		                	String fullDir = "file:\\" + currentDir + "\\images\\Wall.png";
 		                	System.out.println(fullDir);
 		                	Image img = new Image(fullDir);
 		                	//System.out.println(img.getWidth());
 		                	thisCard.setImage(img);
-		                	
+		                	thisCard.setOpacity(.3);
 		                }
 		                draggedCard = null;
 		            }

@@ -1,5 +1,7 @@
 package view;
 
+import java.util.ArrayList;
+
 public class Player {
 	public String pName;
 	public int numP;
@@ -11,6 +13,8 @@ public class Player {
 	public int Bricks = 10;
 	public int Weapons = 10;
 	public int Crystals = 10;
+	
+	public ArrayList<Card> hand;
 	
 	public Player(String pName, int numP) {
 		this.pName = pName;

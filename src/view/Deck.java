@@ -2,6 +2,7 @@ package view;
 
 import java.util.ArrayList;
 import java.util.Random;
+
 public class Deck {
 	Random rand = new Random();
 	public ArrayList<Card> Cards = genDeck();
@@ -31,5 +32,15 @@ public void shuffle(){
 		randDeck.remove(r);
 	}
 } //ends shuffle
+
+public ArrayList<Card> pullRandom(int n) {
+	ArrayList<Card> pulled = new ArrayList<Card>();
+	for(int i = 0; i < n; i++) {
+		int r = rand.nextInt(Cards.size());
+		pulled.add(Cards.get(r));
+		Cards.remove(r);
+	}
+	return pulled;
+}
 
 }
