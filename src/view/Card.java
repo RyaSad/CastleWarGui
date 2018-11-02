@@ -1,3 +1,5 @@
+package view;
+
 public class Card {
 public String cName;
 public String rType;
