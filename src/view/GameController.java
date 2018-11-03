@@ -68,18 +68,15 @@ public class GameController {
 		
 		
 		for(int i = 0; i < cardList.length; i++) {
-		ImageView thisCard = cardList[i];
-		thisCard.setOnMouseClicked(new EventHandler<MouseEvent>()
-	        {
-	            @Override
-	            public void handle(MouseEvent t) {
-	                System.out.println(thisCard.getId());
-	                System.out.println(t.getSceneX());
-	                System.out.println(t.getSceneY());
-	                //Card archer = new Card("Archer","attack","weapons", .5, -1);
-	               // PlayCard(archer);
-	            }
-	        });
+			ImageView thisCard = cardList[i];
+			thisCard.setOnMouseClicked(new EventHandler<MouseEvent>()
+		        {
+		            @Override
+		            public void handle(MouseEvent t) {
+		              		               
+		            }
+
+		        });
 		}
 		
 		
@@ -90,6 +87,9 @@ public class GameController {
 		            @Override
 		            public void handle(MouseEvent t) {
 		                draggedCard = thisCard;
+		                
+		                thisCard.setOpacity(.5);
+		                System.out.println(thisCard.getImage());
 		            }
 		        });
 			}
@@ -112,8 +112,8 @@ public class GameController {
 		                	Image img = new Image(fullDir);
 		                	//System.out.println(img.getWidth());
 		                	thisCard.setImage(img);
-		                	thisCard.setOpacity(.3);
 		                }
+		                thisCard.setOpacity(1);
 		                draggedCard = null;
 		            }
 		        });
